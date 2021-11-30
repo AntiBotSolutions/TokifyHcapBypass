@@ -1,0 +1,15 @@
+flask-socketio
+gevent-websocket
+pillow
+python-socketio
+pytweening
+redis
+numpy
+gevent
+flask
+cv2
+numpy
+cvlib
+io
+subprocess
+time
