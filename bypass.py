@@ -32,4 +32,4 @@ def bypass(sitekey, host, proxy):
             pass
 
 if __name__ == "__main__":
-    bypass('f5561ba9-8f1e-40ca-9b5b-a0b3f719ef34', "https://discord.com/register", "donerbackerspeedproxies:iKDDHwo4hN3SpD50_country-UnitedStates@p.speedproxies.net:31112")
+    bypass('f5561ba9-8f1e-40ca-9b5b-a0b3f719ef34', "https://discord.com/register", "prox")
