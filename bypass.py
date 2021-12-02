@@ -12,24 +12,18 @@ def recognize(tile, word, ch):
         image_bytes = buf.getvalue()
     nparr = np.frombuffer(image_bytes, np.uint8)
     im = cv2.imdecode(nparr, flags=1)
-    objects = cv.detect_common_objects(im, confidence=0.8, nms_thresh=1, enable_gpu=False)[1]
-    objects1 = cv.detect_common_objects(im, confidence=0.8, nms_thresh=1, enable_gpu=False)[1]
-    objects2 = cv.detect_common_objects(im, confidence=0.8, nms_thresh=1, enable_gpu=False)[1]
-    objectss = objects + objects1 + objects2
+    objects = cv.detect_common_objects(im, confidence=0.5, nms_thresh=1, enable_gpu=False)[1]
     if word in objects: ch.answer(tile)
 
 def bypass(sitekey, host, proxy):
     while True:
         try:
             ch = hcaptcha.Challenge(site_key=sitekey, site_url=host, timeout=5)
-            #try: subprocess.call(["taskkill", "/f", "/im", "chrome.exe"])
-            #except: pass
             if ch.token: return ch.token
             word = str(ch.question["en"]).replace("Please click each image containing an ", "").replace("Please click each image containing a ", "")
             if word == "motorbus": word = "bus"
             for tile in ch: recognize(tile, word, ch)
             e = ch.submit()
-            print(e)
             return e
         except Exception as e:
             if e == "Challenge creation request was rejected.":
